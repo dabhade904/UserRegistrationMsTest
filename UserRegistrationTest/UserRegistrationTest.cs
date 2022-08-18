@@ -1,3 +1,4 @@
+using System;
 using UserRegistrationProblem;
 namespace ValidateUserRegistration
 {
@@ -79,6 +80,27 @@ namespace ValidateUserRegistration
         {
             bool lastName = UserPattern.ValidateFirstAndLastName("Si");
             Assert.AreEqual(lastName, false);
+        }
+
+        [TestMethod]
+        public void whenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc.xyz@bl.co.in");
+            Assert.AreEqual(emailId,true);
+        }
+
+        [TestMethod]
+        public void whenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc@bl.co");
+            Assert.AreEqual(emailId,true);
+        }
+
+        [TestMethod]
+        public void whenGivenEmail_IfInvalid_ShouldReturnInvalidEmail()
+        {
+            bool emailId = UserPattern.ValidateEmailId("dabhade904@gmail.com.com.in");
+            Assert.AreEqual(emailId,false);
         }
 
     }
