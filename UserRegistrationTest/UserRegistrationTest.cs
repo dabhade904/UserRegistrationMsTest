@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using UserRegistrationProblem;
 namespace ValidateUserRegistration
@@ -85,10 +88,11 @@ namespace ValidateUserRegistration
         /// <summary>
         /// Test Cases for Email validation 
         /// </summary>
+        /// Email Validation Valid Scenario
         [TestMethod]
         public void WhenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc.xyz@bl.co.in");
+            bool emailId = UserPattern.ValidateEmailId("abc.100@bl.co.in");
             Assert.AreEqual(emailId, true);
         }
 
@@ -100,12 +104,96 @@ namespace ValidateUserRegistration
         }
 
         [TestMethod]
+        public void ShouldReturnTrue()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc.100@abc.com.au");
+            Assert.AreEqual(emailId, true);
+        }
+        [TestMethod]
+        public void WhenItHasTwoDomains()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.com");
+            Assert.AreEqual(emailId, true);
+        }
+
+        [TestMethod]
+        public void WithPlusSign_ShouldReturnTrue()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc+100@gmail.com");
+            Assert.AreEqual(emailId, true);
+        }
+        //Email validation Invalid Scenario
+        [TestMethod]
         public void WhenGivenEmail_IfInvalid_ShouldReturnInvalidEmail()
         {
             bool emailId = UserPattern.ValidateEmailId("dabhade904@gmail.com.com.in");
             Assert.AreEqual(emailId, false);
         }
+        [TestMethod]
+        public void MustContainsAtSignSymbol_ShouldReturnFalse()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc.100.abc.com.au");
+            Assert.AreEqual(emailId, false);
+        }
+        [TestMethod]
+        public void  ShouldNotStartWithDot_ReturnFalse()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc@.com.my");
+            Assert.AreEqual(emailId, false);
+        }
 
+        [TestMethod]
+        public void IsNotValidContainsAtLeastTwoCharacters_ShouldReturnFalse()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc123@gmail.a");
+            Assert.AreEqual(emailId, false);
+        }
+        [TestMethod]
+        public void TldCantStartWithDot()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc123@.com");
+            Assert.AreEqual(emailId, false);
+        }
+        [TestMethod]
+        public void EmailFirststCharacterCanNotStartWith()
+        {
+            bool emailId = UserPattern.ValidateEmailId(".abc@abc.com");
+            Assert.AreEqual(emailId, false);
+        }
+        [TestMethod]
+        public void EmailIsOnlyAllowCharacterDigitUnderscoreAndDash()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc()*@gmail.com");
+            Assert.AreEqual(emailId, false);
+        }
+
+        [TestMethod]
+        public void DoubleDotsAreNotAllow()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc..2002@gmail.com");
+            Assert.AreEqual(emailId, false);
+        }
+
+        [TestMethod]
+        public void EmailLastCharacterCanNotEndWithDot()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc.@gmail.com");
+            Assert.AreEqual(emailId, false);
+        }
+
+        [TestMethod]
+        public void DoubleAtSignAreNotAllow()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc@abc@gmail.com");
+            Assert.AreEqual(emailId, false);
+        }
+
+        [TestMethod]
+        public void CanNotHaveMultipleEmailTld()
+        {
+            bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.aa.au");
+            Assert.AreEqual(emailId, false);
+        }
         /// <summary>
         /// Test cases for Mobile validation
         /// </summary>
@@ -173,5 +261,7 @@ namespace ValidateUserRegistration
             bool password = UserPattern.ValidatePassword("sIchin12");
             Assert.AreEqual(password, false);
         }
+
+
     }
 }
