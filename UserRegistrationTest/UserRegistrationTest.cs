@@ -15,36 +15,71 @@ namespace ValidateUserRegistration
         [TestMethod]
         public void WhenGivenFirstNameStartWithUppercaseReturnTrue()
         {
-            bool firstName = UserPattern.ValidateFirstAndLastName("Sachin");
-            Assert.AreEqual(firstName, true);
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName("Sachin");
+                Assert.AreEqual(firstName, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenFirstNameStartLowerCaseShouldReturnFalse()
         {
-            bool firstName = UserPattern.ValidateFirstAndLastName("sachin");
-            Assert.AreEqual(firstName, false);
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName("sachin");
+                Assert.AreEqual(firstName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenFirstName_WithSpecialSymbol_ShouldReturnFalse()
         {
-            bool firstName = UserPattern.ValidateFirstAndLastName("#achin");
-            Assert.AreEqual(firstName, false);
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName("#achin");
+                Assert.AreEqual(firstName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenFirstName_WithNumber_ShouldReturnFalse()
         {
-            bool firstName = UserPattern.ValidateFirstAndLastName("123achin");
-            Assert.AreEqual(firstName, false);
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName("123achin");
+                Assert.AreEqual(firstName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenFirstName_IsLessThanThreeCharacter()
         {
-            bool firstName = UserPattern.ValidateFirstAndLastName("Si");
-            Assert.AreEqual(firstName, false);
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName("Si");
+                Assert.AreEqual(firstName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
@@ -54,145 +89,293 @@ namespace ValidateUserRegistration
         [TestMethod]
         public void WhenGivenLastNameStartWithUppercaseReturnTrue()
         {
-            bool lastName = UserPattern.ValidateFirstAndLastName("Dabhade");
-            Assert.AreEqual(lastName, true);
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName("Dabhade");
+                Assert.AreEqual(lastName, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenLastNameStartLowerCaseShouldReturnFalse()
         {
-            bool lastName = UserPattern.ValidateFirstAndLastName("dabhade");
-            Assert.AreEqual(lastName, false);
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName("dabhade");
+                Assert.AreEqual(lastName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenLastName_WithSpecialSymbol_ShouldReturnFalse()
         {
-            bool lastName = UserPattern.ValidateFirstAndLastName("#dabhade");
-            Assert.AreEqual(lastName, false);
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName("#dabhade");
+                Assert.AreEqual(lastName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenLastName_WithNumber_ShouldReturnFalse()
         {
-            bool lastName = UserPattern.ValidateFirstAndLastName("123adfdf");
-            Assert.AreEqual(lastName, false);
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName("123adfdf");
+                Assert.AreEqual(lastName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenLastName_IsLessThanThreeCharacter()
         {
-            bool lastName = UserPattern.ValidateFirstAndLastName("Si");
-            Assert.AreEqual(lastName, false);
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName("Si");
+                Assert.AreEqual(lastName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         /// <summary>
         /// Test Cases for Email validation 
         /// </summary>
+        /// 
         /// Email Validation Valid Scenario
         [TestMethod]
         public void WhenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc.100@bl.co.in");
-            Assert.AreEqual(emailId, true);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc.100@bl.co.in");
+                Assert.AreEqual(emailId, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc@bl.co");
-            Assert.AreEqual(emailId, true);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc@bl.co");
+                Assert.AreEqual(emailId, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void ShouldReturnTrue()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc.100@abc.com.au");
-            Assert.AreEqual(emailId, true);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc.100@abc.com.au");
+                Assert.AreEqual(emailId, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
         public void WhenItHasTwoDomains()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.com");
-            Assert.AreEqual(emailId, true);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.com");
+                Assert.AreEqual(emailId, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WithPlusSign_ShouldReturnTrue()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc+100@gmail.com");
-            Assert.AreEqual(emailId, true);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc+100@gmail.com");
+                Assert.AreEqual(emailId, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         //Email validation Invalid Scenario
         [TestMethod]
         public void WhenGivenEmail_IfInvalid_ShouldReturnInvalidEmail()
         {
-            bool emailId = UserPattern.ValidateEmailId("dabhade904@gmail.com.com.in");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("dabhade904@gmail.com.com.in");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
         public void MustContainsAtSignSymbol_ShouldReturnFalse()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc.100.abc.com.au");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc.100.abc.com.au");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
-        public void  ShouldNotStartWithDot_ReturnFalse()
+        public void ShouldNotStartWithDot_ReturnFalse()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc@.com.my");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc@.com.my");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void IsNotValidContainsAtLeastTwoCharacters_ShouldReturnFalse()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc123@gmail.a");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc123@gmail.a");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
         public void TldCantStartWithDot()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc123@.com");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc123@.com");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
         public void EmailFirststCharacterCanNotStartWith()
         {
-            bool emailId = UserPattern.ValidateEmailId(".abc@abc.com");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId(".abc@abc.com");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
         public void EmailIsOnlyAllowCharacterDigitUnderscoreAndDash()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc()*@gmail.com");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc()*@gmail.com");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void DoubleDotsAreNotAllow()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc..2002@gmail.com");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc..2002@gmail.com");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void EmailLastCharacterCanNotEndWithDot()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc.@gmail.com");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc.@gmail.com");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void DoubleAtSignAreNotAllow()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc@abc@gmail.com");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc@abc@gmail.com");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void CanNotHaveMultipleEmailTld()
         {
-            bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.aa.au");
-            Assert.AreEqual(emailId, false);
+            try
+            {
+                bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.aa.au");
+                Assert.AreEqual(emailId, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         /// <summary>
         /// Test cases for Mobile validation
@@ -200,21 +383,42 @@ namespace ValidateUserRegistration
         [TestMethod]
         public void WhenGivenMobileNumber_WhenProper_ShouldReturnTrue()
         {
-            bool mobileNumber = UserPattern.ValidateMobileNumber("91 8888948943");
-            Assert.AreEqual(mobileNumber, true);
+            try
+            {
+                bool mobileNumber = UserPattern.ValidateMobileNumber("91 8888948943");
+                Assert.AreEqual(mobileNumber, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         [TestMethod]
         public void WhenGivenMobileNumber_WhenNotGivenSpace_ShouldReturnFalse()
         {
-            bool mobileNumber = UserPattern.ValidateMobileNumber("9188888948943");
-            Assert.AreEqual(mobileNumber, false);
+            try
+            {
+                bool mobileNumber = UserPattern.ValidateMobileNumber("9188888948943");
+                Assert.AreEqual(mobileNumber, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenMobileNumber_WhenPassCharacter_ShouldReturnFalse()
         {
-            bool mobileNumber = UserPattern.ValidateMobileNumber("abcdefg");
-            Assert.AreEqual(mobileNumber, false);
+            try
+            {
+                bool mobileNumber = UserPattern.ValidateMobileNumber("abcdefg");
+                Assert.AreEqual(mobileNumber, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
@@ -223,43 +427,85 @@ namespace ValidateUserRegistration
         [TestMethod]
         public void WhenGivenPassword_IfMinimumEightCharacters_ShouldReturnTrue()
         {
-            bool userPassword = UserPattern.ValidatePassword("Pass12@a");
-            Assert.AreEqual(userPassword, true);
+            try
+            {
+                bool userPassword = UserPattern.ValidatePassword("Pass12@a");
+                Assert.AreEqual(userPassword, true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenPassword_WhenSpecialSymbol_ShouldReturnFalse()
         {
-            bool userPassword = UserPattern.ValidatePassword("pass@123");
-            Assert.AreEqual(userPassword, false);
+            try
+            {
+                bool userPassword = UserPattern.ValidatePassword("pass@123");
+                Assert.AreEqual(userPassword, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenPassword_IfCharacterLessEight_ShouldReturnFalse()
         {
-            bool userPassword = UserPattern.ValidatePassword("pass123");
-            Assert.AreEqual(userPassword, false);
+            try
+            {
+                bool userPassword = UserPattern.ValidatePassword("pass123");
+                Assert.AreEqual(userPassword, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenPasswordUpper_IfCharacterLessEight_ShouldReturnFalse()
         {
-            bool userPassword = UserPattern.ValidatePassword("pass123");
-            Assert.AreEqual(userPassword, false);
+            try
+            {
+                bool userPassword = UserPattern.ValidatePassword("pass123");
+                Assert.AreEqual(userPassword, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void WhenGivenPassword_IfNoNumericValue_ReturnFalse()
         {
-            bool password = UserPattern.ValidatePassword("sachinA");
-            Assert.AreEqual(password, false);
+            try
+            {
+                bool password = UserPattern.ValidatePassword("sachinA");
+                Assert.AreEqual(password, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         [TestMethod]
         public void ValidatePswd_IfNoSpecialSymbol_ReturnFalse()
         {
-            bool password = UserPattern.ValidatePassword("sIchin12");
-            Assert.AreEqual(password, false);
+            try
+            {
+                bool password = UserPattern.ValidatePassword("sIchin12");
+                Assert.AreEqual(password, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
 
