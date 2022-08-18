@@ -41,5 +41,45 @@ namespace ValidateUserRegistration
             bool firstName = UserPattern.ValidateFirstAndLastName("Si");
             Assert.AreEqual(firstName, false);
         }
+
+        /// <summary>
+        /// Test case for Last Name
+        /// </summary>
+
+        [TestMethod]
+        public void WhenGivenLastNameStartWithUppercaseReturnTrue()
+        {
+            bool lastName = UserPattern.ValidateFirstAndLastName("Dabhade");
+            Assert.AreEqual(lastName, true);
+        }
+
+        [TestMethod]
+        public void WhenGivenLastNameStartLowerCaseShouldReturnFalse()
+        {
+            bool lastName = UserPattern.ValidateFirstAndLastName("dabhade");
+            Assert.AreEqual(lastName, false);
+        }
+
+        [TestMethod]
+        public void whenGivenLastName_WithSpecialSymbol_ShouldReturnFalse()
+        {
+            bool lastName = UserPattern.ValidateFirstAndLastName("#dabhade");
+            Assert.AreEqual(lastName, false);
+        }
+
+        [TestMethod]
+        public void WhenGivenLastName_WithNumber_ShouldReturnFalse()
+        {
+            bool lastName = UserPattern.ValidateFirstAndLastName("123adfdf");
+            Assert.AreEqual(lastName, false);
+        }
+
+        [TestMethod]
+        public void WhenGivenLastName_IsLessThanThreeCharacter()
+        {
+            bool lastName = UserPattern.ValidateFirstAndLastName("Si");
+            Assert.AreEqual(lastName, false);
+        }
+
     }
 }
