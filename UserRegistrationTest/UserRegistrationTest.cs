@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using UserRegistrationProblem;
 namespace ValidateUserRegistration
 {
@@ -23,7 +24,7 @@ namespace ValidateUserRegistration
         }
 
         [TestMethod]
-        public void whenGivenFirstName_WithSpecialSymbol_ShouldReturnFalse()
+        public void WhenGivenFirstName_WithSpecialSymbol_ShouldReturnFalse()
         {
             bool firstName = UserPattern.ValidateFirstAndLastName("#achin");
             Assert.AreEqual(firstName, false);
@@ -62,7 +63,7 @@ namespace ValidateUserRegistration
         }
 
         [TestMethod]
-        public void whenGivenLastName_WithSpecialSymbol_ShouldReturnFalse()
+        public void WhenGivenLastName_WithSpecialSymbol_ShouldReturnFalse()
         {
             bool lastName = UserPattern.ValidateFirstAndLastName("#dabhade");
             Assert.AreEqual(lastName, false);
@@ -81,27 +82,96 @@ namespace ValidateUserRegistration
             bool lastName = UserPattern.ValidateFirstAndLastName("Si");
             Assert.AreEqual(lastName, false);
         }
-
+        /// <summary>
+        /// Test Cases for Email validation 
+        /// </summary>
         [TestMethod]
-        public void whenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail()
+        public void WhenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail()
         {
             bool emailId = UserPattern.ValidateEmailId("abc.xyz@bl.co.in");
-            Assert.AreEqual(emailId,true);
+            Assert.AreEqual(emailId, true);
         }
 
         [TestMethod]
-        public void whenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail()
+        public void WhenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail()
         {
             bool emailId = UserPattern.ValidateEmailId("abc@bl.co");
-            Assert.AreEqual(emailId,true);
+            Assert.AreEqual(emailId, true);
         }
 
         [TestMethod]
-        public void whenGivenEmail_IfInvalid_ShouldReturnInvalidEmail()
+        public void WhenGivenEmail_IfInvalid_ShouldReturnInvalidEmail()
         {
             bool emailId = UserPattern.ValidateEmailId("dabhade904@gmail.com.com.in");
-            Assert.AreEqual(emailId,false);
+            Assert.AreEqual(emailId, false);
         }
 
+        /// <summary>
+        /// Test cases for Mobile validation
+        /// </summary>
+        [TestMethod]
+        public void WhenGivenMobileNumber_WhenProper_ShouldReturnTrue()
+        {
+            bool mobileNumber = UserPattern.ValidateMobileNumber("91 8888948943");
+            Assert.AreEqual(mobileNumber, true);
+        }
+        [TestMethod]
+        public void WhenGivenMobileNumber_WhenNotGivenSpace_ShouldReturnFalse()
+        {
+            bool mobileNumber = UserPattern.ValidateMobileNumber("9188888948943");
+            Assert.AreEqual(mobileNumber, false);
+        }
+
+        [TestMethod]
+        public void WhenGivenMobileNumber_WhenPassCharacter_ShouldReturnFalse()
+        {
+            bool mobileNumber = UserPattern.ValidateMobileNumber("abcdefg");
+            Assert.AreEqual(mobileNumber, false);
+        }
+
+        /// <summary>
+        /// Test cases for validate password
+        /// </summary>
+        [TestMethod]
+        public void WhenGivenPassword_IfMinimumEightCharacters_ShouldReturnTrue()
+        {
+            bool userPassword = UserPattern.ValidatePassword("Pass12@a");
+            Assert.AreEqual(userPassword, true);
+        }
+
+        [TestMethod]
+        public void WhenGivenPassword_WhenSpecialSymbol_ShouldReturnFalse()
+        {
+            bool userPassword = UserPattern.ValidatePassword("pass@123");
+            Assert.AreEqual(userPassword, false);
+        }
+
+        [TestMethod]
+        public void WhenGivenPassword_IfCharacterLessEight_ShouldReturnFalse()
+        {
+            bool userPassword = UserPattern.ValidatePassword("pass123");
+            Assert.AreEqual(userPassword, false);
+        }
+
+        [TestMethod]
+        public void WhenGivenPasswordUpper_IfCharacterLessEight_ShouldReturnFalse()
+        {
+            bool userPassword = UserPattern.ValidatePassword("pass123");
+            Assert.AreEqual(userPassword, false);
+        }
+
+        [TestMethod]
+        public void WhenGivenPassword_IfNoNumericValue_ReturnFalse()
+        {
+            bool password = UserPattern.ValidatePassword("sachinA");
+            Assert.AreEqual(password, false);
+        }
+
+        [TestMethod]
+        public void ValidatePswd_IfNoSpecialSymbol_ReturnFalse()
+        {
+            bool password = UserPattern.ValidatePassword("sIchin12");
+            Assert.AreEqual(password, false);
+        }
     }
 }
