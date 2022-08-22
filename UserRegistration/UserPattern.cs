@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Reflection;
+using System.Text.RegularExpressions;
+using UserRegistration;
 
 namespace UserRegistrationProblem
 {
@@ -11,52 +13,98 @@ namespace UserRegistrationProblem
 
         public static bool ValidateFirstAndLastName(string pattern)
         {
-            var match = Regex.IsMatch(pattern, F_L_Name_Pattern);
-            if (match)
+            try
             {
-                return true;
+                var match = Regex.IsMatch(pattern, F_L_Name_Pattern);
+                if (pattern.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Message should not be empty");
+                }
+                if (match)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (NullReferenceException)
+
             {
-                return false;
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Message should not be null ");
             }
+
         }
 
         public static bool ValidateEmailId(string email)
         {
-            var match = Regex.IsMatch(email, Email_ID_Pattern);
-            if (match)
+            try
             {
-                return true;
+                var match = Regex.IsMatch(email, Email_ID_Pattern);
+                if (email.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
+                }
+                if (match)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (NullReferenceException)
             {
-                return false;
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Email should not be null ");
             }
         }
         public static bool ValidateMobileNumber(string mobile)
         {
-            var match = Regex.IsMatch(mobile, Mobile_Pattern);
-            if (match)
+            try
             {
-                return true;
+                var match = Regex.IsMatch(mobile, Mobile_Pattern);
+                if (mobile.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
+                }
+                if (match)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (NullReferenceException)
             {
-                return false;
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Email should not be null ");
             }
         }
 
         public static bool ValidatePassword(string password)
         {
-            var match = Regex.IsMatch(password, Password);
-            if (match)
+            try
             {
-                return true;
+                var match = Regex.IsMatch(password, Password);
+                if (password.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
+                }
+                if (match)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (NullReferenceException)
             {
-                return false;
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Email should not be null ");
             }
         }
     }

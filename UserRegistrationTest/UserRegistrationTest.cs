@@ -82,6 +82,33 @@ namespace ValidateUserRegistration
             }
         }
 
+        [TestMethod]
+        public void GivenFirstName_When_Empty_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName("");
+                Assert.AreEqual(firstName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenFirstName_When_Null_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool firstName = UserPattern.ValidateFirstAndLastName(null);
+                Assert.AreEqual(firstName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         /// <summary>
         /// Test case for Last Name
         /// </summary>
@@ -155,6 +182,34 @@ namespace ValidateUserRegistration
                 Console.WriteLine(e.Message);
             }
         }
+       [TestMethod]
+        public void GivenLastName_When_Empty_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName("");
+                Assert.AreEqual(lastName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenLastName_When_Null_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool lastName = UserPattern.ValidateFirstAndLastName(null);
+                Assert.AreEqual(lastName, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         /// <summary>
         /// Test Cases for Email validation 
         /// </summary>
@@ -377,6 +432,34 @@ namespace ValidateUserRegistration
                 Console.WriteLine(e.Message);
             }
         }
+
+        [TestMethod]
+        public void GivenEmail_When_Empty_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool email = UserPattern.ValidateFirstAndLastName("");
+                Assert.AreEqual(email, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenEmail_When_Null_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool email = UserPattern.ValidateFirstAndLastName(null);
+                Assert.AreEqual(email, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         /// <summary>
         /// Test cases for Mobile validation
         /// </summary>
@@ -413,6 +496,34 @@ namespace ValidateUserRegistration
             try
             {
                 bool mobileNumber = UserPattern.ValidateMobileNumber("abcdefg");
+                Assert.AreEqual(mobileNumber, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenMobileNumber_When_Empty_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool mobileNumber = UserPattern.ValidateFirstAndLastName("");
+                Assert.AreEqual(mobileNumber, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenMobileNumber_When_Null_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool mobileNumber = UserPattern.ValidateFirstAndLastName(null);
                 Assert.AreEqual(mobileNumber, false);
             }
             catch (Exception e)
@@ -493,7 +604,6 @@ namespace ValidateUserRegistration
                 Console.WriteLine(e.Message);
             }
         }
-
         [TestMethod]
         public void ValidatePswd_IfNoSpecialSymbol_ReturnFalse()
         {
@@ -508,6 +618,32 @@ namespace ValidateUserRegistration
             }
         }
 
+        [TestMethod]
+        public void Given_Password_When_Empty_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool password = UserPattern.ValidateFirstAndLastName("");
+                Assert.AreEqual(password, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
 
+        [TestMethod]
+        public void GivenPassword_When_Null_Should_Throw_CustomException()
+        {
+            try
+            {
+                bool password = UserPattern.ValidateFirstAndLastName(null);
+                Assert.AreEqual(password, false);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }
