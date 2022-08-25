@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using UserRegistration;
 using UserRegistrationProblem;
 namespace ValidateUserRegistration
 {
@@ -17,8 +18,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName("Sachin");
-                Assert.AreEqual(firstName, true);
+                List<string> expected = new List<string>(new string[] { "Sachin" });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -31,8 +33,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName("sachin");
-                Assert.AreEqual(firstName, false);
+                List<string> expected = new List<string>(new string[] { "sachin" });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -45,8 +48,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName("#achin");
-                Assert.AreEqual(firstName, false);
+                List<string> expected = new List<string>(new string[] { "#achin" });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -59,8 +63,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName("123achin");
-                Assert.AreEqual(firstName, false);
+                List<string> expected = new List<string>(new string[] { "123achin" });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -73,8 +78,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName("Si");
-                Assert.AreEqual(firstName, false);
+                List<string> expected = new List<string>(new string[] { "Si" });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -87,8 +93,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName("");
-                Assert.AreEqual(firstName, false);
+                List<string> expected = new List<string>(new string[] { "" });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -101,8 +108,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool firstName = UserPattern.ValidateFirstAndLastName(null);
-                Assert.AreEqual(firstName, false);
+                List<string> expected = new List<string>(new string[] { null });
+                object firstName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, firstName);
             }
             catch (Exception e)
             {
@@ -118,8 +126,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName("Dabhade");
-                Assert.AreEqual(lastName, true);
+                List<string> expected = new List<string>(new string[] { "Dabhade" });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
@@ -132,8 +141,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName("dabhade");
-                Assert.AreEqual(lastName, false);
+                List<string> expected = new List<string>(new string[] { "dabhade" });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
@@ -146,8 +156,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName("#dabhade");
-                Assert.AreEqual(lastName, false);
+                List<string> expected = new List<string>(new string[] { "#dabhade" });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
@@ -160,8 +171,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName("123adfdf");
-                Assert.AreEqual(lastName, false);
+                List<string> expected = new List<string>(new string[] { "123adfdf" });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
@@ -174,21 +186,23 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName("Si");
-                Assert.AreEqual(lastName, false);
+                List<string> expected = new List<string>(new string[] { "Fi" });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
-       [TestMethod]
+        [TestMethod]
         public void GivenLastName_When_Empty_Should_Throw_CustomException()
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName("");
-                Assert.AreEqual(lastName, false);
+                List<string> expected = new List<string>(new string[] { "" });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
@@ -201,8 +215,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool lastName = UserPattern.ValidateFirstAndLastName(null);
-                Assert.AreEqual(lastName, false);
+                List<string> expected = new List<string>(new string[] { null });
+                object lastName = UserPattern.ValidateFirstAndLastName(expected);
+                Assert.AreEqual(expected, lastName);
             }
             catch (Exception e)
             {
@@ -220,8 +235,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc.100@bl.co.in");
-                Assert.AreEqual(emailId, true);
+                List<string> expected = new List<string>(new string[] { "abc.100@bl.co.in" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -234,8 +250,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc@bl.co");
-                Assert.AreEqual(emailId, true);
+                List<string> expected = new List<string>(new string[] { "abc@bl.co" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -248,8 +265,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc.100@abc.com.au");
-                Assert.AreEqual(emailId, true);
+                List<string> expected = new List<string>(new string[] { "abc.100@abc.com.au" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -261,8 +279,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.com");
-                Assert.AreEqual(emailId, true);
+                List<string> expected = new List<string>(new string[] { "abc@gmail.com.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -275,8 +294,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc+100@gmail.com");
-                Assert.AreEqual(emailId, true);
+                List<string> expected = new List<string>(new string[] { "abc+100@gmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -289,8 +309,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("dabhade904@gmail.com.com.in");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "dabhade904@gmail.com.com.in" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -302,8 +323,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc.100.abc.com.au");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc.100.abc.com.au" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -315,8 +337,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc@.com.my");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc@.com.my" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -329,8 +352,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc123@gmail.a");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc123@gmail.a" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -342,8 +366,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc123@.com");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc123@.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -355,8 +380,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId(".abc@abc.com");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { ".abc@abc.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -368,8 +394,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc()*@gmail.com");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc()*@gmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -382,8 +409,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc..2002@gmail.com");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc..2002@gmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -396,8 +424,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc.@gmail.com");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc.@gmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -410,8 +439,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc@abc@gmail.com");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc@abc@gmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -420,12 +450,13 @@ namespace ValidateUserRegistration
         }
 
         [TestMethod]
-        public void CanNotHaveMultipleEmailTld()
+        public void Can_Not_Have_Multiple_Email_Tld()
         {
             try
             {
-                bool emailId = UserPattern.ValidateEmailId("abc@gmail.com.aa.au");
-                Assert.AreEqual(emailId, false);
+                List<string> expected = new List<string>(new string[] { "abc@gmail.com.aa.au" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -438,8 +469,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool email = UserPattern.ValidateFirstAndLastName("");
-                Assert.AreEqual(email, false);
+                List<string> expected = new List<string>(new string[] { "" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
             }
             catch (Exception e)
             {
@@ -452,8 +484,25 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool email = UserPattern.ValidateFirstAndLastName(null);
-                Assert.AreEqual(email, false);
+                List<string> expected = new List<string>(new string[] { null });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(expected, emailId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        [TestMethod]
+        public void GivenEmail_When_Multiple_Email_Should_Validate_Email()
+        {
+            try
+            {
+                List<string> expected = new List<string>(new string[] { "Sachin@gmail.com","sachind9765@rediffmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(emailId,expected);
             }
             catch (Exception e)
             {
@@ -468,8 +517,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool mobileNumber = UserPattern.ValidateMobileNumber("91 8888948943");
-                Assert.AreEqual(mobileNumber, true);
+                List<string> expected = new List<string>(new string[] { "91 8888948943" });
+                object mobileNumber = UserPattern.ValidateMobileNumber(expected);
+                Assert.AreEqual(expected, mobileNumber);
             }
             catch (Exception e)
             {
@@ -481,8 +531,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool mobileNumber = UserPattern.ValidateMobileNumber("9188888948943");
-                Assert.AreEqual(mobileNumber, false);
+                List<string> expected = new List<string>(new string[] { "9188888948943" });
+                object mobileNumber = UserPattern.ValidateMobileNumber(expected);
+                Assert.AreEqual(expected, mobileNumber);
             }
             catch (Exception e)
             {
@@ -495,8 +546,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool mobileNumber = UserPattern.ValidateMobileNumber("abcdefg");
-                Assert.AreEqual(mobileNumber, false);
+                List<string> expected = new List<string>(new string[] { "abcdefg" });
+                object mobileNumber = UserPattern.ValidateMobileNumber(expected);
+                Assert.AreEqual(expected, mobileNumber);
             }
             catch (Exception e)
             {
@@ -509,8 +561,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool mobileNumber = UserPattern.ValidateFirstAndLastName("");
-                Assert.AreEqual(mobileNumber, false);
+                List<string> expected = new List<string>(new string[] {"" });
+                object mobileNumber = UserPattern.ValidateMobileNumber(expected);
+                Assert.AreEqual(expected, mobileNumber);
             }
             catch (Exception e)
             {
@@ -523,8 +576,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool mobileNumber = UserPattern.ValidateFirstAndLastName(null);
-                Assert.AreEqual(mobileNumber, false);
+                List<string> expected = new List<string>(new string[] { null });
+                object mobileNumber = UserPattern.ValidateMobileNumber(expected);
+                Assert.AreEqual(expected, mobileNumber);
             }
             catch (Exception e)
             {
@@ -540,8 +594,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool userPassword = UserPattern.ValidatePassword("Pass12@a");
-                Assert.AreEqual(userPassword, true);
+                List<string> expected = new List<string>(new string[] { "Pass12@a" });
+                object userPassword = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, userPassword);
             }
             catch (Exception e)
             {
@@ -554,8 +609,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool userPassword = UserPattern.ValidatePassword("pass@123");
-                Assert.AreEqual(userPassword, false);
+                List<string> expected = new List<string>(new string[] { "pass@123" });
+                object userPassword = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, userPassword);
             }
             catch (Exception e)
             {
@@ -568,8 +624,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool userPassword = UserPattern.ValidatePassword("pass123");
-                Assert.AreEqual(userPassword, false);
+                List<string> expected = new List<string>(new string[] { "pass123" });
+                object userPassword = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, userPassword);
             }
             catch (Exception e)
             {
@@ -582,8 +639,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool userPassword = UserPattern.ValidatePassword("pass123");
-                Assert.AreEqual(userPassword, false);
+                List<string> expected = new List<string>(new string[] { "pass123" });
+                object userPassword = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, userPassword);
             }
             catch (Exception e)
             {
@@ -596,8 +654,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool password = UserPattern.ValidatePassword("sachinA");
-                Assert.AreEqual(password, false);
+                List<string> expected = new List<string>(new string[] { "sachinA" });
+                object userPassword = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, userPassword);
             }
             catch (Exception e)
             {
@@ -609,8 +668,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool password = UserPattern.ValidatePassword("sIchin12");
-                Assert.AreEqual(password, false);
+                List<string> expected = new List<string>(new string[] { "sIchin12" });
+                object userPassword = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, userPassword);
             }
             catch (Exception e)
             {
@@ -623,8 +683,9 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool password = UserPattern.ValidateFirstAndLastName("");
-                Assert.AreEqual(password, false);
+                List<string> expected = new List<string>(new string[] { "" });
+                object password = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, password);
             }
             catch (Exception e)
             {
@@ -637,13 +698,22 @@ namespace ValidateUserRegistration
         {
             try
             {
-                bool password = UserPattern.ValidateFirstAndLastName(null);
-                Assert.AreEqual(password, false);
+                List<string> expected = new List<string>(new string[] { null });
+                object password = UserPattern.ValidatePassword(expected);
+                Assert.AreEqual(expected, password);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        [TestMethod]
+        public void Given_User_Registration_ClassName_Should_Return_User_Registration_Object()
+        {
+            object expected = new UserPattern();
+            object obj = UserRegistrationFactory.CreateUserRegistration("UserRegistrationProblem.UserPattern", "UserPattern", "");
+            expected.Equals(obj);
         }
     }
 }

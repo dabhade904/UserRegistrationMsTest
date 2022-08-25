@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 using UserRegistration;
 
@@ -11,101 +12,32 @@ namespace UserRegistrationProblem
         public static string Mobile_Pattern = "^[0-9]{2,2}[ ][7,8,9]{1,1}[0-9]{9}$";
         public static string Password = "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[+@#$%^&*!.()-]).{8,}";
 
-        public static bool ValidateFirstAndLastName(string pattern)
+        public static List<string> ValidateFirstAndLastName(List<string> firstName)
         {
-            try
-            {
-                var match = Regex.IsMatch(pattern, F_L_Name_Pattern);
-                if (pattern.Equals(string.Empty))
-                {
-                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Message should not be empty");
-                }
-                if (match)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (NullReferenceException)
-
-            {
-                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Message should not be null ");
-            }
-
+            Regex pattern = new Regex(F_L_Name_Pattern);
+            var result = firstName.Select(str => pattern.Match(str).Value).ToList();
+            return result;
         }
 
-        public static bool ValidateEmailId(string email)
+        public static List<string> ValidateEmailId(List<string> email)
         {
-            try
-            {
-                var match = Regex.IsMatch(email, Email_ID_Pattern);
-                if (email.Equals(string.Empty))
-                {
-                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
-                }
-                if (match)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Email should not be null ");
-            }
-        }
-        public static bool ValidateMobileNumber(string mobile)
-        {
-            try
-            {
-                var match = Regex.IsMatch(mobile, Mobile_Pattern);
-                if (mobile.Equals(string.Empty))
-                {
-                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
-                }
-                if (match)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Email should not be null ");
-            }
+            Regex pattern = new Regex(Email_ID_Pattern);
+            var result = email.Select(str => pattern.Match(str).Value).ToList();
+            return result;
         }
 
-        public static bool ValidatePassword(string password)
+        public static List<string> ValidateMobileNumber(List<string> mobile)
         {
-            try
-            {
-                var match = Regex.IsMatch(password, Password);
-                if (password.Equals(string.Empty))
-                {
-                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
-                }
-                if (match)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (NullReferenceException)
-            {
-                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Email should not be null ");
-            }
+            Regex pattern = new Regex(Mobile_Pattern);
+            var result = mobile.Select(str => pattern.Match(str).Value).ToList();
+            return result;
+        }
+
+        public static List<string> ValidatePassword(List<string> password)
+        {
+            Regex pattern = new Regex(Mobile_Pattern);
+            var result = password.Select(str => pattern.Match(str).Value).ToList();
+            return result;
         }
     }
 }

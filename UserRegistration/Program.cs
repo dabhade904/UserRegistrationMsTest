@@ -1,4 +1,6 @@
-﻿namespace UserRegistrationProblem
+﻿using System.Text.RegularExpressions;
+
+namespace UserRegistrationProblem
 {
     public class Program
     {
