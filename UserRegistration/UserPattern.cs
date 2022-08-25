@@ -14,30 +14,75 @@ namespace UserRegistrationProblem
 
         public static List<string> ValidateFirstAndLastName(List<string> firstName)
         {
-            Regex pattern = new Regex(F_L_Name_Pattern);
-            var result = firstName.Select(str => pattern.Match(str).Value).ToList();
-            return result;
+            try
+            {
+                Regex pattern = new Regex(F_L_Name_Pattern);
+                if (firstName.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Name should not be empty");
+                }
+                var result = firstName.Select(str => pattern.Match(str).Value).ToList();
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Name is null");
+            }
         }
 
         public static List<string> ValidateEmailId(List<string> email)
         {
-            Regex pattern = new Regex(Email_ID_Pattern);
-            var result = email.Select(str => pattern.Match(str).Value).ToList();
-            return result;
+            try
+            {
+                Regex pattern = new Regex(Email_ID_Pattern);
+                if (email.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "Email should not be empty");
+                }
+                var result = email.Select(str => pattern.Match(str).Value).ToList();
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "EMail is null");
+            }
+
         }
 
         public static List<string> ValidateMobileNumber(List<string> mobile)
         {
-            Regex pattern = new Regex(Mobile_Pattern);
-            var result = mobile.Select(str => pattern.Match(str).Value).ToList();
-            return result;
+            try
+            {
+                Regex pattern = new Regex(Mobile_Pattern);
+                if (mobile.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "mobile number should not be empty");
+                }
+                var result = mobile.Select(str => pattern.Match(str).Value).ToList();
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Mobile number is null");
+            }
         }
 
         public static List<string> ValidatePassword(List<string> password)
         {
-            Regex pattern = new Regex(Mobile_Pattern);
-            var result = password.Select(str => pattern.Match(str).Value).ToList();
-            return result;
+            try
+            {
+                Regex pattern = new Regex(Mobile_Pattern);
+                if (password.Equals(string.Empty))
+                {
+                    throw new UserCustomException(UserCustomException.ExceptionType.EMPTY_MESSAGE, "password should not be empty");
+                }
+                var result = password.Select(str => pattern.Match(str).Value).ToList();
+                return result;
+            }
+            catch (Exception)
+            {
+                throw new UserCustomException(UserCustomException.ExceptionType.NULL_MESSAGE, "Passoword is null");
+            }
         }
     }
 }

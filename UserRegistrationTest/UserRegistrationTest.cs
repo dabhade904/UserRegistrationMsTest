@@ -707,13 +707,13 @@ namespace ValidateUserRegistration
                 Console.WriteLine(e.Message);
             }
         }
-
+/*
         [TestMethod]
         public void Given_User_Registration_ClassName_Should_Return_User_Registration_Object()
         {
             object expected = new UserPattern();
             object obj = UserRegistrationFactory.CreateUserRegistration("UserRegistrationProblem.UserPattern", "UserPattern", "");
             expected.Equals(obj);
-        }
+        }*/
     }
 }
