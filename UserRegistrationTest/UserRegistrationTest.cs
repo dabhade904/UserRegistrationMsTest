@@ -493,6 +493,22 @@ namespace ValidateUserRegistration
                 Console.WriteLine(e.Message);
             }
         }
+
+
+        [TestMethod]
+        public void GivenEmail_When_Multiple_Email_Should_Validate_Email()
+        {
+            try
+            {
+                List<string> expected = new List<string>(new string[] { "Sachin@gmail.com","sachind9765@rediffmail.com" });
+                object emailId = UserPattern.ValidateEmailId(expected);
+                Assert.AreEqual(emailId,expected);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         /// <summary>
         /// Test cases for Mobile validation
         /// </summary>
